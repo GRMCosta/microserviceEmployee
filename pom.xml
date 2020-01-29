@@ -15,8 +15,15 @@
     <description>microservice project for Spring Boot</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>myMavenRepo.read</id>
+            <url>https://mymavenrepo.com/repo/7Johze6KwSdIRfHF6KuQ/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -26,6 +33,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.grcosta</groupId>
+            <artifactId>message-locator</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
