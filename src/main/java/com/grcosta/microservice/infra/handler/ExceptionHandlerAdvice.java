@@ -1,11 +1,11 @@
 package com.grcosta.microservice.infra.handler;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grcosta.messagelocator.domain.Error;
 import com.grcosta.messagelocator.domain.Service;
 import com.grcosta.messagelocator.domain.ServiceMessage;
 import com.grcosta.messagelocator.exception.ServiceException;
 import com.grcosta.messagelocator.interfaces.MessageService;
+import com.grcosta.microservice.infra.exception.EmployeeException;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,19 +22,14 @@ public class ExceptionHandlerAdvice {
   @Value("${message-locator.service-name}")
   private String serviceName;
 
-  @Value("${message-locator.benefits-users.service-name}")
-  private String benefitsUsersServiceName;
-
   @Value("${message-locator.service-id}")
   private Integer serviceId;
 
   private final MessageService messageService;
 
-  private final ObjectMapper objectMapper;
 
-  public ExceptionHandlerAdvice(MessageService messageService, ObjectMapper objectMapper) {
+  public ExceptionHandlerAdvice(MessageService messageService) {
     this.messageService = messageService;
-    this.objectMapper = objectMapper;
   }
 
   @ExceptionHandler(Exception.class)
@@ -60,6 +55,33 @@ public class ExceptionHandlerAdvice {
       log.error("Error", e.toString());
     }
 
+    return ResponseEntity.status(httpStatus).body(body);
+  }
+
+  @ExceptionHandler(EmployeeException.class)
+  public ResponseEntity<ResponseAdvice> handleEmployeeException(EmployeeException exception){
+    log.error("Employee Handler", exception);
+
+
+    HttpStatus httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
+    ResponseAdvice body = new ResponseAdvice();
+    body.setCode(exception.getMessage());
+    body.setDescription(httpStatus.getReasonPhrase());
+
+    try{
+      String exceptionMessage = exception.getMessage();
+      Error error = new Error(exceptionMessage, "");
+      Service service = new Service(Integer.toString(serviceId), serviceName);
+      ServiceException serviceException = new ServiceException(exception, service, error);
+
+      ServiceMessage serviceMessage = messageService.getServiceMessage(serviceException);
+
+      httpStatus = HttpStatus.valueOf(serviceMessage.getHttpStatus());
+      body.setCode(serviceMessage.getCode());
+      body.setDescription(serviceMessage.getDescription());
+    }catch (Exception e){
+      log.error("Error" , e);
+    }
     return ResponseEntity.status(httpStatus).body(body);
   }
 

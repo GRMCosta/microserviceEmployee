@@ -11,7 +11,7 @@ import org.springframework.core.env.Environment;
 @Configuration
 public class MetricsConfiguration {
 
-  @Bean
+
   MeterRegistryCustomizer<MeterRegistry> registerCommonTags(Environment environment){
     final String applicationName = environment.getProperty("spring.application.name");
     return registry -> registry.config().commonTags(

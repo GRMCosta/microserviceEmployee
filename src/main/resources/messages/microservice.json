@@ -1,0 +1,86 @@
+[
+  {
+    "500": {
+      "code": "500",
+      "httpStatus": 500,
+      "description": "Internal Server Error, please contact the support or try it again later."
+    }
+  },
+  {
+    "412.1": {
+      "code": "412.1",
+      "httpStatus": 412,
+      "description": "name is required."
+    }
+  },
+  {
+    "412.2": {
+      "code": "412.2",
+      "httpStatus": 412,
+      "description": "contact is required."
+    }
+  },
+  {
+    "412.3": {
+      "code": "412.3",
+      "httpStatus": 412,
+      "description": "email is required."
+    }
+  },
+  {
+    "412.4": {
+      "code": "412.4",
+      "httpStatus": 412,
+      "description": "address is required."
+    }
+  },
+  {
+    "412.5": {
+      "code": "412.5",
+      "httpStatus": 412,
+      "description": "district is required."
+    }
+  },
+  {
+    "412.6": {
+      "code": "412.6",
+      "httpStatus": 412,
+      "description": "city is required."
+    }
+  },
+  {
+    "412.7": {
+      "code": "412.7",
+      "httpStatus": 412,
+      "description": "state is required."
+    }
+  },
+  {
+    "412.8": {
+      "code": "412.8",
+      "httpStatus": 412,
+      "description": "postalCode is required."
+    }
+  },
+  {
+    "412.9": {
+      "code": "412.9",
+      "httpStatus": 412,
+      "description": "number is required."
+    }
+  },
+  {
+    "412.10": {
+      "code": "412.10",
+      "httpStatus": 412,
+      "description": "salary is required."
+    }
+  },
+  {
+    "412.11": {
+      "code": "412.11",
+      "httpStatus": 412,
+      "description": "boss is required."
+    }
+  }
+]
