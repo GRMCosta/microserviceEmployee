@@ -29,4 +29,10 @@ public final class Messages {
 
     public static final String BOSS_IS_REQUIRED = "412.11";
 
+    public static final String CPF_IS_REQUIRED = "412.12";
+
+    public static final String EMPLOYEE_ALREADY_EXISTS = "422.1";
+
+    public static final String CPF_IS_INVALID = "422.2";
+
 }

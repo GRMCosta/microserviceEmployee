@@ -82,5 +82,26 @@
       "httpStatus": 412,
       "description": "boss is required."
     }
+  },
+  {
+    "412.12": {
+      "code": "412.12",
+      "httpStatus": 412,
+      "description": "cpf is required."
+    }
+  },
+  {
+    "422.1": {
+      "code": "422.1",
+      "httpStatus": 422,
+      "description": "Employee already exists"
+    }
+  },
+  {
+    "422.2": {
+      "code": "422.2",
+      "httpStatus": 422,
+      "description": "cpf is invalid"
+    }
   }
 ]

@@ -25,6 +25,8 @@ public class Employee {
 
     private String email;
 
+    private String cpf;
+
     private Address address;
 
     private LocalDate createdDateTime;

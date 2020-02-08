@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -28,6 +29,10 @@ public class CreateEmployeeRequest {
     @NotBlank(message = Messages.EMAIL_IS_REQUIRED)
     private String email;
 
+    @CPF(message = Messages.CPF_IS_INVALID)
+    @NotBlank(message = Messages.CPF_IS_REQUIRED)
+    private String cpf;
+
     @Valid
     @NotNull(message = Messages.ADDRESS_IS_REQUIRED)
     private AddressRequest address;
@@ -43,6 +48,7 @@ public class CreateEmployeeRequest {
                 .name(name)
                 .contact(contact)
                 .email(email)
+                .cpf(cpf)
                 .address(Address.builder()
                         .district(address.getDistrict())
                         .city(address.getCity())
